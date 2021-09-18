@@ -74,6 +74,12 @@ public class Jmart
         return (int)hasil;
     }
     
+    public static Product create()
+    {
+        Product product = new Product("Baju Nike", 1, true, 10000.0, ProductCategory.FASHION);
+        return product;
+    }
+    
     public static void main (String[]args){
         System.out.println(getDiscountPercentage(1000,900));
         System.out.println(getDiscountedPrice(1000,120.0f));
