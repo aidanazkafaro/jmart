@@ -76,8 +76,24 @@ public class Jmart
     
     public static Product create()
     {
-        Product product = new Product("Baju Nike", 1, true, 10000.0, ProductCategory.FASHION);
+        PriceTag price = new PriceTag(10000.0);
+        Product product = new Product("Baju Nike", 1, true, price, ProductCategory.FASHION);
         return product;
+    }
+    
+    public static Product createProduct()
+    {
+        return null;
+    }
+    
+    public static Coupon createCoupon()
+    {
+        return null;
+    }
+    
+    public static ShipmentDuration createShipmentDuration()
+    {
+        return null;
     }
     
     public static void main (String[]args){
@@ -87,6 +103,7 @@ public class Jmart
         System.out.println(getCommissionMultiplier());
         System.out.println(getAdjustedPrice(0));
         System.out.println(getAdminFee(500));
+        create();
     }
     
 }

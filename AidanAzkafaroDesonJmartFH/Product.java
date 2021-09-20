@@ -10,8 +10,8 @@ package AidanAzkafaroDesonJmartFH;
 public class Product
 {
     // instance variables - replace the example below with your own
-    private static int idCounter = 1;
-    private int id = 0;
+    private static int idCounter;
+    private int id;
     public String name;
     public int weight;
     public boolean conditionUsed;
@@ -31,7 +31,7 @@ public class Product
         this.priceTag = priceTag;
         this.category = category;
         rating = new ProductRating();
-        this.id += idCounter;
+        this.id = ++idCounter;
     }
 
 
