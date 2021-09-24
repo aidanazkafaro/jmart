@@ -30,25 +30,13 @@ public class ShipmentDuration
     
     public boolean isDuration(ShipmentDuration reference)
     {
-        int tempBit;
-        if((reference.bit & INSTANT.bit) == INSTANT.bit)
-        {
-            return true;
-        }else if((reference.bit & SAME_DAY.bit) == SAME_DAY.bit)
-        {
-            return true;
-        }else if((reference.bit & NEXT_DAY.bit) == NEXT_DAY.bit)
-        {
-            return true;
-        }else if((reference.bit & REGULER.bit) == REGULER.bit)
-        {
-            return true;
-        }else if((reference.bit & KARGO.bit) == KARGO.bit)
+        int tempBit = this.bit;
+        if((reference.bit & tempBit) == reference.bit)
         {
             return true;
         }
 
-        return true;
+        return false;
     }
     
  
