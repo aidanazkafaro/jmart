@@ -32,6 +32,10 @@ public class ProductRating
     
     public double getAverage()
     {
+        if(count == 0)
+        {
+            return 0.0;
+        }
         return (double)(total/count);
     }
     

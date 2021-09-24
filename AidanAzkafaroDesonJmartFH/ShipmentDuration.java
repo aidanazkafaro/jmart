@@ -15,21 +15,42 @@ public class ShipmentDuration
     {
         this.bit = bit;
     }
-    /*
+    
     public ShipmentDuration (ShipmentDuration... args)
     {
-        
+        int tempBit = 0;
         for(ShipmentDuration s:args)
         {
-            this.bit = 1;
+            tempBit = tempBit | s.bit; 
         }
         
-       
+        this.bit = tempBit;
+        
     }
-    */
-    public boolean isDuration(ShipmentDuration references)
+    
+    public boolean isDuration(ShipmentDuration reference)
     {
+        int tempBit;
+        if((reference.bit & INSTANT.bit) == INSTANT.bit)
+        {
+            return true;
+        }else if((reference.bit & SAME_DAY.bit) == SAME_DAY.bit)
+        {
+            return true;
+        }else if((reference.bit & NEXT_DAY.bit) == NEXT_DAY.bit)
+        {
+            return true;
+        }else if((reference.bit & REGULER.bit) == REGULER.bit)
+        {
+            return true;
+        }else if((reference.bit & KARGO.bit) == KARGO.bit)
+        {
+            return true;
+        }
+
         return true;
     }
+    
+ 
     
 }

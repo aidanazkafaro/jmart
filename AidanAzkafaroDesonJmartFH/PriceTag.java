@@ -43,10 +43,10 @@ public class PriceTag
         if(getDiscountedPrice() < BOTTOM_PRICE)
         {
             return BOTTOM_FEE;
-        }else
-        {
-            return (getDiscountedPrice()*COMMISSION_MULTIPLIER);
         }
+        
+        return (getDiscountedPrice()*COMMISSION_MULTIPLIER);
+        
         
     }   
     

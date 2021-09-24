@@ -2,7 +2,8 @@
 comment0.target=ShipmentDuration
 comment1.params=bit
 comment1.target=ShipmentDuration(int)
-comment2.params=references
-comment2.target=boolean\ isDuration(ShipmentDuration)
-comment2.text=\r\n\ \ \ \ public\ ShipmentDuration\ (ShipmentDuration...\ args)\r\n\ \ \ \ {\r\n\ \ \ \ \ \ \ \ \r\n\ \ \ \ \ \ \ \ for(ShipmentDuration\ s\:args)\r\n\ \ \ \ \ \ \ \ {\r\n\ \ \ \ \ \ \ \ \ \ \ \ this.bit\ \=\ 1;\r\n\ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ \r\n\ \ \ \ \ \ \ \r\n\ \ \ \ }\r\n
-numComments=3
+comment2.params=args
+comment2.target=ShipmentDuration(ShipmentDuration[])
+comment3.params=reference
+comment3.target=boolean\ isDuration(ShipmentDuration)
+numComments=4

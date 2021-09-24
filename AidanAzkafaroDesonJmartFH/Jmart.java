@@ -82,18 +82,22 @@ public class Jmart
     }
     
     public static Product createProduct()
-    {
-        return null;
+    {   
+        PriceTag price = new PriceTag(100000.0);
+        Product product = new Product("Sepatu", 1, false , price, ProductCategory.FASHION);
+        return product;
     }
     
-    public static Coupon createCoupon()
+    public static Coupon createCoupun()
     {
-        return null;
+        Coupon coupon = new Coupon("sebuah coupon", 14045 , Coupon.Type.DISCOUNT, 10, 20000.0);
+        return coupon;
     }
     
     public static ShipmentDuration createShipmentDuration()
     {
-        return null;
+        ShipmentDuration shipmentDuration = new ShipmentDuration();
+        return shipmentDuration;
     }
     
     public static void main (String[]args){
@@ -103,6 +107,7 @@ public class Jmart
         System.out.println(getCommissionMultiplier());
         System.out.println(getAdjustedPrice(0));
         System.out.println(getAdminFee(500));
+        
         create();
     }
     

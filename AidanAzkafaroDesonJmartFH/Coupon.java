@@ -32,27 +32,27 @@ public class Coupon
 
     public boolean isUsed()
     {
-        return this.used;
+        return used;
     }
     
     public boolean canApply(PriceTag priceTag)
     {
-        if(!used)
+        if((priceTag.getAdjustedPrice() > minimum) && !used)
         {
             return true;
-        }else
-        {
-            return false;
         }
+        
+        return false;
+        
     }
     
     public boolean apply(PriceTag priceTag)
     {
-        this.used = true;
-        return this.used;
+        used = true;
+        return used;
     }
     
-    public static enum Type
+    public enum Type
     {
         DISCOUNT, REBATE
     }   
