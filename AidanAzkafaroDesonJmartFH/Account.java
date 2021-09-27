@@ -26,5 +26,9 @@ public class Account extends Recognizable implements FileParser
     public boolean read (String string){
         return false;
     }
+    
+    public String toString(){
+        return "nanti bang";
+    }
   
 }

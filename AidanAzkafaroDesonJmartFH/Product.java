@@ -19,14 +19,15 @@ public class Product extends Recognizable
     public ProductCategory category;
     public ProductRating rating;
     public int storeId;
+    public Shipment.MultiDuration multiDuration;
 
     /**
      * Constructor for objects of class Product
      */
-    public Product(int id, int storeId, String name, int weight, boolean conditionUsed, PriceTag priceTag, ProductCategory category)
+    public Product(int id, int storeId, String name, int weight, boolean conditionUsed, PriceTag priceTag, ProductCategory category, Shipment.MultiDuration multiDuration)
     {
         // initialise instance variables
-        this.id = id;
+        super(id);
         this.storeId = storeId;
         this.name = name;
         this.weight = weight;
@@ -35,24 +36,14 @@ public class Product extends Recognizable
         this.category = category;
         rating = new ProductRating();
         this.id = ++idCounter;
+        this.multiDuration = multiDuration;
     }
     
-    public Product(int id, Store store, String name, int weight, boolean conditionUsed, PriceTag priceTag, ProductCategory category)
-    {
-        // initialise instance variables
-        this.id = id;
-        this.storeId = store;
-        this.name = name;
-        this.weight = weight;
-        this.conditionUsed = conditionUsed;
-        this.priceTag = priceTag;
-        this.category = category;
-        rating = new ProductRating();
-        this.id = ++idCounter;
+    public String toString(){
+        return "nanti bang";
     }
-
-    public boolean read (String){
-        
+    public boolean read (String content){
+        return false;
     }
 
 }

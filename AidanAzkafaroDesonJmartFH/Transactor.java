@@ -7,10 +7,11 @@ package AidanAzkafaroDesonJmartFH;
  * @author (your name)
  * @version (a version number or a date)
  */
-public abstract class Transaction extends Recognizable
+public interface Transactor 
 {
     // instance variables - replace the example below with your own
-    public String time = "Time";
+    /*
+    public String time;
     public int buyerId;
     public int storeId;
     public Rating rating = Rating.NONE;
@@ -18,10 +19,8 @@ public abstract class Transaction extends Recognizable
     enum Rating {
         NONE, BAD, NEUTRAL, GOOD
     }
-    /**
-     * Constructor for objects of class Transaction
-     */
-    protected Transaction(int id, int buyerId, int storeId)
+ 
+    protected Transactor(int id, int buyerId, int storeId)
     {
         // initialise instance variables
         super(id);
@@ -31,11 +30,18 @@ public abstract class Transaction extends Recognizable
         rating = Rating.NONE;
     }
     
-    protected Transaction(int id, Account buyer, Store store)
+    protected Transactor(int id, Account buyer, Store store)
     {
         // initialise instance variables
         super(id);
-       
+        this.buyerId = buyer.id;
+        this.storeId = store.id;
     }
+    */
+    public abstract boolean validate();
+    public abstract Transactor perform();
+    
+    
+    
   
 }

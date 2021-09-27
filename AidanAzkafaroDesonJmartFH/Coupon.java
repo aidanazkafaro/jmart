@@ -7,7 +7,7 @@ package AidanAzkafaroDesonJmartFH;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Coupon
+public class Coupon extends Recognizable
 {
     // instance variables - replace the example below with your own
     public final String name;
@@ -19,15 +19,16 @@ public class Coupon
     /**
      * Constructor for objects of class Coupon
      */
-    public Coupon(String name, int code, Type type, double cut, double minimum)
+    public Coupon(int id, String name, int code, Type type, double cut, double minimum)
     {
         // initialise instance variables
+        super(id);
         this.name = name;
         this.code = code;
         this.type = type;
         this.cut = cut;
         this.minimum = minimum;
-        this.used = false;
+        used = false;
     }
 
     public boolean isUsed()
@@ -46,15 +47,22 @@ public class Coupon
         
     }
     
-    public boolean apply(PriceTag priceTag)
+    public double apply(PriceTag priceTag)
     {
-        used = true;
-        return used;
+        used=true;
+        if(type == Type.DISCOUNT) {
+            return (priceTag.getAdjustedPrice() - ((100-cut)/100));
+        }
+        
+        return (priceTag.getAdjustedPrice()-cut);
     }
-    
     public enum Type
     {
         DISCOUNT, REBATE
     }   
+    
+    public boolean read (String content){
+        return false;
+    };
     
 }
