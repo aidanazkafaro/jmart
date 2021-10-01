@@ -4,7 +4,7 @@ package AidanAzkafaroDesonJmartFH;
 /**
  * Write a description of class Coupon here.
  *
- * @author (your name)
+ * @author (Aidan Azkafaro Deson)
  * @version (a version number or a date)
  */
 public class Coupon extends Recognizable
@@ -56,13 +56,10 @@ public class Coupon extends Recognizable
         
         return (priceTag.getAdjustedPrice()-cut);
     }
+    
     public enum Type
     {
         DISCOUNT, REBATE
     }   
-    
-    public boolean read (String content){
-        return false;
-    };
     
 }

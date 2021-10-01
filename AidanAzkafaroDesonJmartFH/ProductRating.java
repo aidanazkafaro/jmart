@@ -4,7 +4,7 @@ package AidanAzkafaroDesonJmartFH;
 /**
  * Write a description of class ProductRating here.
  *
- * @author (your name)
+ * @author (Aidan Azkafaro Deson)
  * @version (a version number or a date)
  */
 public class ProductRating

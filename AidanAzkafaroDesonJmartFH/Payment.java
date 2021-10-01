@@ -4,14 +4,12 @@ package AidanAzkafaroDesonJmartFH;
 /**
  * Write a description of class Payment here.
  *
- * @author (your name)
+ * @author (Aidan Azkafaro Deson)
  * @version (a version number or a date)
  */
 public class Payment extends Invoice implements Transactor
 {
     // instance variables - replace the example below with your own
-    public int productId;
-    
     public Shipment shipment;
     public int productCount;
     

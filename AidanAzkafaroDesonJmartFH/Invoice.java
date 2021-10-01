@@ -4,7 +4,7 @@ package AidanAzkafaroDesonJmartFH;
 /**
  * Abstract class Invoice - write a description of the class here
  *
- * @author (your name here)
+ * @author (Aidan Azkafaro Deson)
  * @version (version number or date here)
  */
 public abstract class Invoice extends Recognizable implements FileParser
@@ -13,7 +13,7 @@ public abstract class Invoice extends Recognizable implements FileParser
     public String date;
     public int buyerId;
     public int productId;
-    public int complaintIdl;
+    public int complaintId;
     public Rating rating;
     public Status status;
     
@@ -36,7 +36,9 @@ public abstract class Invoice extends Recognizable implements FileParser
         this.status = Status.WAITING_CONFIRMATION;
     }
     
-    public double getTotalPay(){
-        return 0.0;
-    }
+    public abstract double getTotalPay();
+    
+    public boolean read (String content){
+        return false;
+    };
 }

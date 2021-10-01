@@ -4,7 +4,7 @@ package AidanAzkafaroDesonJmartFH;
 /**
  * Write a description of class Store here.
  *
- * @author (your name)
+ * @author (Aidan Azkafaro Deson)
  * @version (a version number or a date)
  */
 public class Store extends Recognizable implements FileParser
@@ -40,7 +40,7 @@ public class Store extends Recognizable implements FileParser
     };
     
     public String toString(){
-        return "nanti bang";
+        return "name: " + this.name + "\n" + "address: " + this.address + "\n" + "phoneNumber: " + this.phoneNumber;
     }
 
 }

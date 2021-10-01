@@ -77,29 +77,35 @@ public class Jmart
     public static Product create()
     {
         PriceTag price = new PriceTag(10000.0);
-        Product product = new Product("Baju Nike", 1, true, price, ProductCategory.FASHION);
+        Shipment.MultiDuration multiDuration = new Shipment.MultiDuration();
+        Product product = new Product(1, 10, "Baju Nike", 1, true, price, ProductCategory.FASHION, multiDuration);
         return product;
     }
     
     public static Product createProduct()
     {   
         PriceTag price = new PriceTag(100000.0);
-        Product product = new Product("Sepatu", 1, false , price, ProductCategory.FASHION);
+        Shipment.MultiDuration multiDuration = new Shipment.MultiDuration();
+        Product product = new Product(1, 10, "Sepatu", 1, false , price, ProductCategory.FASHION, multiDuration);
         return product;
     }
     
     public static Coupon createCoupun()
     {
-        Coupon coupon = new Coupon("sebuah coupon", 14045 , Coupon.Type.DISCOUNT, 10, 20000.0);
+        Coupon coupon = new Coupon(1, "sebuah coupon", 14045 , Coupon.Type.DISCOUNT, 10, 20000.0);
         return coupon;
     }
     
-    public static ShipmentDuration createShipmentDuration()
+    /*
+    public static Shipment createShipmentDuration()
     {
-        ShipmentDuration shipmentDuration = new ShipmentDuration();
-        return shipmentDuration;
+        
+        Shipment.Duration duration = new Shipment.Duration((byte)(1 << 0));
+        Shipment shipment = new Shipment("alamatku", 9000, duration, "a receipt");
+        return shipment;
     }
-    
+    */
+   
     public static void main (String[]args){
         System.out.println(getDiscountPercentage(1000,900));
         System.out.println(getDiscountedPrice(1000,120.0f));

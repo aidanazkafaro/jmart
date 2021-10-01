@@ -7,7 +7,7 @@ package AidanAzkafaroDesonJmartFH;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Product extends Recognizable
+public class Product extends Recognizable implements FileParser
 {
     // instance variables - replace the example below with your own
     private static int idCounter;
@@ -40,7 +40,9 @@ public class Product extends Recognizable
     }
     
     public String toString(){
-        return "nanti bang";
+        return "name: " + this.name + "\n" + "weight: " + this.weight + "\n" + 
+        "conditionUsed: " + this.conditionUsed + "\n" + "priceTag: " + this.priceTag + "\n" 
+        + "category: " + this.category + "\n" + "rating: " + this.rating + "\n" + "storeId: " + this.storeId;
     }
     public boolean read (String content){
         return false;
