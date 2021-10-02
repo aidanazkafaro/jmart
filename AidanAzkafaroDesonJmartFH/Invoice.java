@@ -1,5 +1,6 @@
 package AidanAzkafaroDesonJmartFH;
-
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Abstract class Invoice - write a description of the class here
@@ -17,6 +18,7 @@ public abstract class Invoice extends Recognizable implements FileParser
     public Rating rating;
     public Status status;
     
+    SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy");
     public static enum Rating
     {
         NONE, BAD, NEUTRAL, GOOD;
@@ -31,7 +33,7 @@ public abstract class Invoice extends Recognizable implements FileParser
         super(id);
         this.buyerId = buyerId;
         this.productId = productId;
-        this.date = "0/0/0 (default)";
+        this.date = sdf.format(new Date());
         this.rating = Rating.NONE;
         this.status = Status.WAITING_CONFIRMATION;
     }

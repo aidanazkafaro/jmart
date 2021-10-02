@@ -10,5 +10,6 @@ package AidanAzkafaroDesonJmartFH;
 public interface Transactor 
 {
     public abstract boolean validate();
-    public abstract Invoice perform();   
+    public abstract Invoice perform();  
+    
 }

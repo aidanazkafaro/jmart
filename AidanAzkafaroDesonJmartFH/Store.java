@@ -1,5 +1,6 @@
 package AidanAzkafaroDesonJmartFH;
-
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Write a description of class Store here.
@@ -13,6 +14,8 @@ public class Store extends Recognizable implements FileParser
     public String name;
     public String address;
     public String phoneNumber;
+    public static final String REGEX_PHONE = "^(\\d{9,12})$";
+    public static final String REGEX_NAME = "^(^([A-Za-z]{4,20}).([A-Za-z]{0,20})$)$";
     
     /**
      * Constructor for objects of class Store
@@ -41,6 +44,22 @@ public class Store extends Recognizable implements FileParser
     
     public String toString(){
         return "name: " + this.name + "\n" + "address: " + this.address + "\n" + "phoneNumber: " + this.phoneNumber;
+    }
+    
+    public boolean validate(){
+        Pattern patternName = Pattern.compile(REGEX_NAME);
+        Matcher matcherName = patternName.matcher(name);
+        boolean matchFoundName = matcherName.find();
+        
+        Pattern patternPhone = Pattern.compile(REGEX_PHONE);
+        Matcher matcherPhone = patternPhone.matcher(phoneNumber);
+        boolean matchFoundPhone = matcherPhone.find();
+        
+        if(matchFoundName && matchFoundPhone){
+            return true;
+        }
+        return false;
+        
     }
 
 }
