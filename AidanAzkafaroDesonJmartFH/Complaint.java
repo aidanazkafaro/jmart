@@ -15,7 +15,6 @@ public class Complaint extends Recognizable implements FileParser
     public String date;
     
     SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy");
-    
    
     public Complaint(int id, String desc){
         super(id);
@@ -32,5 +31,12 @@ public class Complaint extends Recognizable implements FileParser
     
     public boolean read (String content){
         return false;
-    };
+    }
+    
+    public String toString(){
+        SimpleDateFormat SDformat = new SimpleDateFormat("dd/MM/yyyy");
+        String formatDate = SDformat.format(this.date);
+        return "{date = " + formatDate + "desc = '" + this.desc + "'}"; 
+    }
+    
 }

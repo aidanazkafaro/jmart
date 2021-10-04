@@ -10,34 +10,30 @@ import java.util.ArrayList;
  */
 public class Filter
 {
-    public static ArrayList<PriceTag> filterPriceTag(PriceTag[] list, double value, boolean less){
-        
-        less = false;
-        
-        ArrayList<PriceTag>priceTags = new ArrayList<PriceTag>();
-        if(less == true){
-            for(int i = 0; i < list.length; i++){
-                double temp = list[i].getAdjustedPrice();
-                if(list[i].getAdjustedPrice() < value){
-                    priceTags.add(new PriceTag(temp));
-                }
-                
-            }
-        }else if (less == false){
-            for(int i = 0; i < list.length; i++){
-                double temp = list[i].getAdjustedPrice();
-                if(list[i].getAdjustedPrice() >= value){
-                    priceTags.add(new PriceTag(temp));
-                }
-                
+   public static ArrayList<PriceTag> filterPriceTag(PriceTag[] list, double value, boolean less) 
+    {
+        ArrayList<PriceTag> priceTag = new ArrayList<>();
+        for (PriceTag s : list) {
+            if (less && s.getAdjustedPrice() < value || !less && s.getAdjustedPrice() >= value)
+            {
+                priceTag.add(s);
             }
         }
         
-        return priceTags;
-        
-    }
+        return priceTag;
+   }
     
-    public void filterProductRating(ArrayList<ProductRating> list, double value, boolean less){
+   public static void filterProductRating(ArrayList<ProductRating> list, double value, boolean less) 
+    {
+        
+        for (int i = 0; i < list.size(); ++i) 
+        {
+            final ProductRating e = list.get(i);
+            if (less && e.getAverage() < value || !less && e.getAverage() >= value)
+            {
+                list.remove(i);
+            }
+        }
         
     }
 }

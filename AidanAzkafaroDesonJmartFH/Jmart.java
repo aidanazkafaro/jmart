@@ -3,7 +3,7 @@ package AidanAzkafaroDesonJmartFH;
 
 /**
  *
- * @author (Aidan Azkafaro Deson/2006528862)
+ * @author (Aidan Azkafaro Deson)
  * 
  */
 public class Jmart
@@ -73,7 +73,9 @@ public class Jmart
         float hasil = priceFloat * getCommissionMultiplier();
         return (int)hasil;
     }
-    
+    public static Shipment.Duration shipmentDuration(){
+        return null;
+    }
     public static Product create()
     {
         PriceTag price = new PriceTag(10000.0);
@@ -96,25 +98,9 @@ public class Jmart
         return coupon;
     }
     
-    /*
-    public static Shipment createShipmentDuration()
-    {
-        
-        Shipment.Duration duration = new Shipment.Duration((byte)(1 << 0));
-        Shipment shipment = new Shipment("alamatku", 9000, duration, "a receipt");
-        return shipment;
-    }
-    */
    
     public static void main (String[]args){
-        System.out.println(getDiscountPercentage(1000,900));
-        System.out.println(getDiscountedPrice(1000,120.0f));
-        System.out.println(getOriginalPrice(1000,0));
-        System.out.println(getCommissionMultiplier());
-        System.out.println(getAdjustedPrice(0));
-        System.out.println(getAdminFee(500));
         
-        create();
     }
     
 }

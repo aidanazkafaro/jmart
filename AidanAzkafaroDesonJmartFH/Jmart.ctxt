@@ -1,15 +1,16 @@
 #BlueJ class context
 comment0.target=Jmart
-comment0.text=\r\n\r\n\ @author\ (Aidan\ Azkafaro\ Deson/2006528862)\r\n\ \r\n
+comment0.text=\r\n\r\n\ @author\ (Aidan\ Azkafaro\ Deson)\r\n\ \r\n
 comment1.params=
 comment1.target=int\ getPromo()
 comment10.params=
-comment10.target=Product\ createProduct()
+comment10.target=Product\ create()
 comment11.params=
-comment11.target=Coupon\ createCoupun()
-comment12.params=args
-comment12.target=void\ main(java.lang.String[])
-comment12.text=\r\n\ \ \ \ public\ static\ Shipment\ createShipmentDuration()\r\n\ \ \ \ {\r\n\ \ \ \ \ \ \ \ \r\n\ \ \ \ \ \ \ \ Shipment.Duration\ duration\ \=\ new\ Shipment.Duration((byte)(1\ <<\ 0));\r\n\ \ \ \ \ \ \ \ Shipment\ shipment\ \=\ new\ Shipment("alamatku",\ 9000,\ duration,\ "a\ receipt");\r\n\ \ \ \ \ \ \ \ return\ shipment;\r\n\ \ \ \ }\r\n
+comment11.target=Product\ createProduct()
+comment12.params=
+comment12.target=Coupon\ createCoupun()
+comment13.params=args
+comment13.target=void\ main(java.lang.String[])
 comment2.params=
 comment2.target=java.lang.String\ getCustomer()
 comment3.params=before\ after
@@ -25,5 +26,5 @@ comment7.target=int\ getAdjustedPrice(int)
 comment8.params=price
 comment8.target=int\ getAdminFee(int)
 comment9.params=
-comment9.target=Product\ create()
-numComments=13
+comment9.target=Shipment.Duration\ shipmentDuration()
+numComments=14
