@@ -35,7 +35,7 @@ public class Complaint extends Recognizable implements FileParser
     
     public String toString(){
         SimpleDateFormat SDformat = new SimpleDateFormat("dd/MM/yyyy");
-        String formatDate = SDformat.format(this.date);
+        String formatDate = SDformat.format(date);
         return "{date = " + formatDate + "desc = '" + this.desc + "'}"; 
     }
     

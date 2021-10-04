@@ -27,9 +27,9 @@ public class Payment extends Invoice implements Transactor
         return false;
     }
     
-    public Transactor perform(){
+    public Invoice perform(){
         return null;
-    }
+    };
     
     public boolean read (String content){
         return false;
