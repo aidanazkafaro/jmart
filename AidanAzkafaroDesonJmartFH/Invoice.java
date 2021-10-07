@@ -2,7 +2,7 @@ package AidanAzkafaroDesonJmartFH;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ArrayList;
-
+import java.util.Calendar;
 /**
  * Abstract class Invoice - write a description of the class here
  *
@@ -21,6 +21,8 @@ public abstract class Invoice extends Recognizable implements FileParser
     public ArrayList<Record> history;
     
     SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy");
+    Calendar cal = Calendar.getInstance();
+    
     public static enum Rating
     {
         NONE, BAD, NEUTRAL, GOOD;
@@ -35,7 +37,7 @@ public abstract class Invoice extends Recognizable implements FileParser
         super(id);
         this.buyerId = buyerId;
         this.productId = productId;
-        this.date = sdf.format(new Date());
+        this.date = sdf.format(cal.getTime());
         this.rating = Rating.NONE;
         this.status = Status.WAITING_CONFIRMATION;
     }

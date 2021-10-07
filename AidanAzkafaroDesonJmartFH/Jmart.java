@@ -100,11 +100,13 @@ public class Jmart
     
    
     public static void main (String[]args){
-        Complaint complaint = new Complaint(10, "sebuah komplain");
+        Complaint complaint = new Complaint(10, "Failed to pay");
         System.out.println(complaint.toString());
         
         Account account = new Account(1, "ahmad", "ahmaddhani@gmail.com", "ahmad1010");
         System.out.println(account.validate());
+        
+        System.out.println("Hello from Eclipse!");
     }
     
 }
