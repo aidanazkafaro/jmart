@@ -35,7 +35,7 @@ public class Shipment implements FileParser
         public static final Duration KARGO = new Duration((byte)(1 << 4));
         private byte bit;
         
-        public static final SimpleDateFormat ESTIMATION_FORMAT = new SimpleDateFormat("'Date Format'E, MM/dd/yyyy");
+        public static final SimpleDateFormat ESTIMATION_FORMAT = new SimpleDateFormat("'Date Format'E MMMM dd yyyy");
     
         
         private Duration(byte bit)

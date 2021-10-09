@@ -22,7 +22,7 @@ public class Store extends Recognizable implements FileParser
      */
     public Store(int accountId, String name, String address, String phoneNumber)
     {
-        // initialise instance variables
+        // Initialize instance variables
         super(accountId); 
         this.name = name;
         this.address = address;
@@ -31,7 +31,7 @@ public class Store extends Recognizable implements FileParser
 
     public Store(Account account, String name, String address, String phoneNumber)
     {
-        // initialise instance variables
+        // Initialize instance variables
         super(account.id);
         this.name = name;
         this.address = address;
