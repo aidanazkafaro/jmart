@@ -10,7 +10,7 @@ import java.text.SimpleDateFormat;
  * @author (Aidan Azkafaro Deson)
  * @version (a version number or a date)
  */
-public class Shipment implements FileParser
+public class Shipment 
 {
     // instance variables - replace the example below with your own
     public String address;

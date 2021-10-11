@@ -10,7 +10,7 @@ import java.util.Calendar;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Complaint extends Recognizable implements FileParser
+public class Complaint extends Recognizable
 {
     // instance variables - replace the example below with your own
     public String desc;
@@ -20,16 +20,12 @@ public class Complaint extends Recognizable implements FileParser
     Calendar cal = Calendar.getInstance();
     
     public Complaint(int id, String desc){
-        super(id);
+      
         this.desc = desc;
         this.date = sdf.format(cal.getTime());
     }
     public boolean validate(){
         return false;
-    }
-    
-    public Transactor perform(){
-        return null;
     }
     
     public boolean read (String content){

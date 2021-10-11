@@ -9,7 +9,7 @@ import java.util.Calendar;
  * @author (Aidan Azkafaro Deson)
  * @version (version number or date here)
  */
-public abstract class Invoice extends Recognizable implements FileParser
+public abstract class Invoice extends Recognizable
 {
     // instance variables - replace the example below with your own
     public String date;
@@ -34,7 +34,7 @@ public abstract class Invoice extends Recognizable implements FileParser
     }
     
     protected Invoice(int id, int buyerId, int productId){
-        super(id);
+  
         this.buyerId = buyerId;
         this.productId = productId;
         this.date = sdf.format(cal.getTime());

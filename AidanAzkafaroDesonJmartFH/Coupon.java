@@ -22,7 +22,7 @@ public class Coupon extends Recognizable
     public Coupon(int id, String name, int code, Type type, double cut, double minimum)
     {
         // initialise instance variables
-        super(id);
+    
         this.name = name;
         this.code = code;
         this.type = type;

@@ -7,7 +7,7 @@ package AidanAzkafaroDesonJmartFH;
  * @author (Aidan Azkafaro Deson)
  * @version (a version number or a date)
  */
-public class Payment extends Invoice implements Transactor
+public class Payment extends Invoice 
 {
     // instance variables - replace the example below with your own
     public Shipment shipment;

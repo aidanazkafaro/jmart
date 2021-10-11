@@ -7,7 +7,7 @@ package AidanAzkafaroDesonJmartFH;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Product extends Recognizable implements FileParser
+public class Product extends Recognizable 
 {
     // instance variables - replace the example below with your own
     private static int idCounter;
@@ -27,7 +27,7 @@ public class Product extends Recognizable implements FileParser
     public Product(int id, int storeId, String name, int weight, boolean conditionUsed, PriceTag priceTag, ProductCategory category, Shipment.MultiDuration multiDuration)
     {
         // Initialize instance variables
-        super(id);
+     
         this.storeId = storeId;
         this.name = name;
         this.weight = weight;
