@@ -13,6 +13,7 @@ public class Store extends Recognizable
     // instance variables - replace the example below with your own
     public String name;
     public String address;
+    public double balance;
     public String phoneNumber;
     public static final String REGEX_PHONE = "^(\\d{9,12})$";
     public static final String REGEX_NAME = "^(?=^[A-Z])(?![A-Z a-z]{20,})((?=[A-Z a-z]{4,}).)((?!\\s{2}).)*$";
@@ -20,30 +21,21 @@ public class Store extends Recognizable
     /**
      * Constructor for objects of class Store
      */
-    public Store(int accountId, String name, String address, String phoneNumber)
-    {
-        // Initialize instance variables
-        
-        this.name = name;
-        this.address = address;
-        this.phoneNumber = phoneNumber;
-    }
 
-    public Store(Account account, String name, String address, String phoneNumber)
+    public Store(String name, String address, String phoneNumber, double balance)
     {
         // Initialize instance variables
-        
+  
         this.name = name;
         this.address = address;
         this.phoneNumber = phoneNumber;
+        this.balance = balance;
     }
     
-    public boolean read (String content){
-        return false;
-    };
+ 
     
     public String toString(){
-        return "name: " + this.name + "\n" + "address: " + this.address + "\n" + "phoneNumber: " + this.phoneNumber;
+        return "name: " + (String)this.name + "\n" + "address: " + (String)this.address + "\n" + "Phone Number" + (String)this.phoneNumber;
     }
     
     public boolean validate(){

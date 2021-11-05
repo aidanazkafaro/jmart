@@ -1,8 +1,7 @@
 package AidanAzkafaroDesonJmartFH;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Calendar;
-
 
 /**
  * Write a description of class Complaint here.
@@ -10,32 +9,20 @@ import java.util.Calendar;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Complaint extends Recognizable
-{
-    // instance variables - replace the example below with your own
-    public String desc;
-    public String date;
-    
-    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-    Calendar cal = Calendar.getInstance();
-    
-    public Complaint(int id, String desc){
-      
-        this.desc = desc;
-        this.date = sdf.format(cal.getTime());
-    }
-    public boolean validate(){
-        return false;
-    }
-    
-    public boolean read (String content){
-        return false;
-    }
-    
-    public String toString(){
-        SimpleDateFormat SDformat = new SimpleDateFormat("dd/MM/yyyy");
-        String formatDate = SDformat.format(cal.getTime());
-        return "{date = " + formatDate + ", desc = '" + this.desc + "'}"; 
-    }
-    
+public class Complaint extends Recognizable {
+	// instance variables - replace the example below with your own
+	public String desc;
+	public final Date date;
+	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
+	public Complaint(String desc) {
+		this.desc = desc;
+		this.date = new Date();
+	}
+
+	public String toString() {
+		String formatDate = sdf.format(date);
+		return "Complaint{date = " + formatDate + ", desc = '" + desc + "'}";
+	}
+
 }

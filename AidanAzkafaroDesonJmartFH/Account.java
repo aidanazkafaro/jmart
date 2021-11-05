@@ -9,22 +9,17 @@ public class Account extends Recognizable
     public String name;
     public String email;
     public String password;
-    public static String REGEX_EMAIL = "^\\w+([\\&_*~.]?\\w+)*@\\w+([\\.-]?\\w+)*.?\\w+$";
-    public static String REGEX_PASSWORD = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d][^-\\s]{8,}$";
+    public double balance;
+    public Store store;
+    public static final String REGEX_EMAIL = "^\\w+([\\&_*~.]?\\w+)*@\\w+([\\.-]?\\w+)*.?\\w+$";
+    public static final String REGEX_PASSWORD = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d][^-\\s]{8,}$";
   
-    public Account (int id, String name, String email, String password){
+    public Account (String name, String email, String password, double balance){
         
         this.name = name;
         this.email = email;
         this.password = password;
-    }
-    
-    public boolean read (String string){
-        return false;
-    }
-    
-    public String toString(){
-        return "name: " + this.name + "\n" + "email: " + this.email + "\n" + "password: " + this.password;
+        this.balance = balance;
     }
   
     public boolean validate(){

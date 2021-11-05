@@ -7,45 +7,33 @@ package AidanAzkafaroDesonJmartFH;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Product extends Recognizable 
+public class Product extends Recognizable
 {
-    // instance variables - replace the example below with your own
-    private static int idCounter;
-    private int id;
-    public String name;
-    public int weight;
-    public boolean conditionUsed;
-    public PriceTag priceTag;
+    public int accountId;
     public ProductCategory category;
-    public ProductRating rating;
-    public int storeId;
-    public Shipment.MultiDuration multiDuration;
+    public boolean conditionUsed;
+    public double discount;
+    public String name;
+    public double price;
+    public byte shipmentPlans;
+    public int weight;
 
-    /**
-     * Constructor for objects of class Product
-     */
-    public Product(int id, int storeId, String name, int weight, boolean conditionUsed, PriceTag priceTag, ProductCategory category, Shipment.MultiDuration multiDuration)
+
+    public Product(int accountId, String name, int weight, boolean conditionUsed, double price, double discount, ProductCategory category, byte shipmentPlans)
     {
-        // Initialize instance variables
-     
-        this.storeId = storeId;
         this.name = name;
         this.weight = weight;
         this.conditionUsed = conditionUsed;
-        this.priceTag = priceTag;
         this.category = category;
-        rating = new ProductRating();
-        this.id = ++idCounter;
-        this.multiDuration = multiDuration;
-    }
-    
-    public String toString(){
-        return "name: " + this.name + "\n" + "weight: " + this.weight + "\n" + 
-        "conditionUsed: " + this.conditionUsed + "\n" + "priceTag: " + this.priceTag + "\n" 
-        + "category: " + this.category + "\n" + "rating: " + this.rating + "\n" + "storeId: " + this.storeId;
-    }
-    public boolean read (String content){
-        return false;
+        this.accountId = accountId;
+        this.price = price;
+        this.discount = discount;
+        this.shipmentPlans = shipmentPlans;
     }
 
+    public String toString(){
+        return "name: " + (String)this.name + "\n" + "weight: " + (int)this.weight + "\n" + "conditionUsed: " +  (boolean)this.conditionUsed + "Discount: " + (Double)this.discount + "\n" + "Category: " + this.category + "\n" + "Price: " + (double)this.price + "\n" + "ShipmentPlans: " + this.shipmentPlans;
+    }
+    
 }
+

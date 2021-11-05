@@ -2,6 +2,6 @@ package AidanAzkafaroDesonJmartFH;
 
 public interface Predicate<T>{
 	
-	public boolean predicate(T obj);
+	public boolean predicate(T arg);
 	
 }

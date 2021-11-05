@@ -14,6 +14,7 @@ public class Recognizable implements Comparable<Recognizable> {
 	}
 
 	public static <T> int setClosingId(Class<T> clazz, int id) {
+		//checking if the generic class "Class" inherits from Recognizable class
 		if (Class.class.isAssignableFrom(Recognizable.class)) {
 			return 0;
 		} else {
@@ -29,19 +30,20 @@ public class Recognizable implements Comparable<Recognizable> {
 		}
 	}
 
-	public boolean equals(Object object) {
+	public boolean equals(Object other) {
 
-		return (object != null) && (object instanceof Recognizable) && (this.id == ((Recognizable) object).id);
+		return (other != null) && (other instanceof Recognizable) && (this.id == ((Recognizable) other).id);
 	}
 
-	public boolean equals(Recognizable recognizable) {
-		if (this.id == recognizable.id) {
+	public boolean equals(Recognizable other) {
+		if (this.id == other.id) {
 			return true;
 		}
 		return false;
 	}
 
 	@Override
+	//compareTo(Object) method is the only method on Java Comparable interface.
 	public int compareTo(Recognizable other) {
 		// TODO Auto-generated method stub
 		if (id == other.id) {

@@ -7,7 +7,7 @@ package AidanAzkafaroDesonJmartFH;
  * @author (Aidan Azkafaro Deson)
  * @version (18/9/21)
  */
-public class PriceTag
+public class Treasury
 {
     // instance variables - replace the example below with your own
     public static final double COMMISSION_MULTIPLIER = 0.05;
@@ -16,22 +16,6 @@ public class PriceTag
     public double discount;
     public double price;
 
-    /**
-     * Constructor for objects of class PriceTag
-     */
-    public PriceTag(double price)
-    {
-        // initialise instance variables
-        this.price = price;
-        this.discount = 0.0;
-    }
-
-    public PriceTag(double price, double discount)
-    {
-        // initialise instance variables
-        this.price = price;
-        this.discount = discount;
-    }
 
     public double getAdjustedPrice()
     {

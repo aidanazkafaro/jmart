@@ -36,9 +36,9 @@ public class Coupon extends Recognizable
         return used;
     }
     
-    public boolean canApply(PriceTag priceTag)
+    public boolean canApply(Treasury treasury)
     {
-        if((priceTag.getAdjustedPrice() > minimum) && !used)
+        if((treasury.getAdjustedPrice() > minimum) && !used)
         {
             return true;
         }
@@ -47,14 +47,14 @@ public class Coupon extends Recognizable
         
     }
     
-    public double apply(PriceTag priceTag)
+    public double apply(Treasury treasury)
     {
         used=true;
         if(type == Type.DISCOUNT) {
-            return (priceTag.getAdjustedPrice() - ((100-cut)/100));
+            return (treasury.getAdjustedPrice() - ((100-cut)/100));
         }
         
-        return (priceTag.getAdjustedPrice()-cut);
+        return (treasury.getAdjustedPrice()-cut);
     }
     
     public enum Type
