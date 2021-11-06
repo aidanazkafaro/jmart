@@ -2,7 +2,7 @@ package AidanAzkafaroDesonJmartFH;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Account extends Recognizable
+public class Account extends Serializable
 {
     
     // instance variables - replace the example below with your own
@@ -11,8 +11,8 @@ public class Account extends Recognizable
     public String password;
     public double balance;
     public Store store;
-    public static final String REGEX_EMAIL = "^\\w+([\\&_*~.]?\\w+)*@\\w+([\\.-]?\\w+)*.?\\w+$";
-    public static final String REGEX_PASSWORD = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d][^-\\s]{8,}$";
+    public static final String REGEX_EMAIL = "^\\\\w+([.&`~-]?\\\\w+)*@\\\\w+([.-]?\\\\w+)+$";
+    public static final String REGEX_PASSWORD = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\\\d)[a-zA-Z\\\\d][^-\\\\s]{8,}$";
   
     public Account (String name, String email, String password, double balance){
         

@@ -7,7 +7,7 @@ package AidanAzkafaroDesonJmartFH;
  * @author (Aidan Azkafaro Deson)
  * @version (a version number or a date)
  */
-public class Coupon extends Recognizable
+public class Coupon extends Serializable
 {
     // instance variables - replace the example below with your own
     public final String name;

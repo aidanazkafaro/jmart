@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * @author (Aidan Azkafaro Deson)
  * @version (version number or date here)
  */
-public abstract class Invoice extends Recognizable
+public abstract class Invoice extends Serializable
 {
     // instance variables - replace the example below with your own
     public final Date date;
