@@ -28,23 +28,12 @@ public class Serializable implements Comparable<Serializable> {
 
 	// mutasi nilai serial dalam mapCounter
 	public static <T> Integer setClosingId(Class<T> clazz, int id) {
-		// checking if the generic class "Class" inherits from Recognizable class
-//		if (Class.class.isAssignableFrom(Serializable.class)) {
-//			return 0;
-//		} else {
-//			return 1;
-//		}
-
 		return mapCounter.replace(clazz.getClass(), id);
 
 	}
 
 	public static <T> Integer getClosingId(Class<T> clazz) {
-//		if (Class.class.isAssignableFrom(Serializable.class)) {
-//			return 0;
-//		} else {
-//			return 1;
-//		}
+
 		return mapCounter.get(clazz.getClass());
 	}
 
