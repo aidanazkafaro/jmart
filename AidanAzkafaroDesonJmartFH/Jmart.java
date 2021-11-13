@@ -97,25 +97,41 @@ public class Jmart {
 
 	public static void main(String[] args) throws FileNotFoundException {
 
-		System.out.println("account id: " + new Account(null, null, null, -1).id);
-		System.out.println("account id: " + new Account(null, null, null, -1).id);
-		System.out.println("account id: " + new Account(null, null, null, -1).id);
-
-		System.out.println("payment id: " + new Payment(-1, -1, -1, null).id);
-		System.out.println("payment id: " + new Payment(-1, -1, -1, null).id);
-		System.out.println("payment id: " + new Payment(-1, -1, -1, null).id);
-
-		try {
-			List<Product> list = read(
-					"C:\\Users\\aidan\\Programming\\OOP Tekkom\\Praktikum OOP\\jmart\\randomProductList.json");
-			List<Product> filtered = filterByPrice(list, 98000.0, 0.0);
-			filtered.forEach(product -> System.out.println(product.price));
-		} catch (Throwable t) {
+//		System.out.println("account id: " + new Account(null, null, null, -1).id);
+//		System.out.println("account id: " + new Account(null, null, null, -1).id);
+//		System.out.println("account id: " + new Account(null, null, null, -1).id);
+//
+//		System.out.println("payment id: " + new Payment(-1, -1, -1, null).id);
+//		System.out.println("payment id: " + new Payment(-1, -1, -1, null).id);
+//		System.out.println("payment id: " + new Payment(-1, -1, -1, null).id);
+//
+//		try {
+//			List<Product> list = read(
+//					"C:\\Users\\aidan\\Programming\\OOP Tekkom\\Praktikum OOP\\jmart\\randomProductList.json");
+//			List<Product> filtered = filterByPrice(list, 98000.0, 0.0);
+//			filtered.forEach(product -> System.out.println(product.price));
+//		} catch (Throwable t) {
+//			t.printStackTrace();
+//		}
+//		List<Product> list = read(
+//				"C:\\Users\\aidan\\Programming\\OOP Tekkom\\Praktikum OOP\\jmart\\randomProductList.json");
+//		System.out.println(filterByAccountId(list, 1, 0, 5));
+		
+		try
+		{
+			String filepath = "C:\\Users\\aidan\\Programming\\OOP Tekkom\\Praktikum OOP\\jmart\\account3.json";
+			
+			JsonTable <Account> tableAccount = new JsonTable<>(Account.class, filepath);
+			tableAccount.add(new Account("name", "email", "password", 0));
+			tableAccount.writeJson();
+			
+			tableAccount = new JsonTable<>(Account.class, filepath);
+			tableAccount.forEach(account -> System.out.println(account.toString()));
+		}
+		catch (Throwable t)
+		{
 			t.printStackTrace();
 		}
-		List<Product> list = read(
-				"C:\\Users\\aidan\\Programming\\OOP Tekkom\\Praktikum OOP\\jmart\\randomProductList.json");
-		System.out.println(filterByAccountId(list, 1, 0, 5));
 	}
 
 }
