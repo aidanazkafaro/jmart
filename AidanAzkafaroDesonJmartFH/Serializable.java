@@ -28,13 +28,13 @@ public class Serializable implements Comparable<Serializable> {
 
 	// mutasi nilai serial dalam mapCounter
 	public static <T> Integer setClosingId(Class<T> clazz, int id) {
-		return mapCounter.replace(clazz.getClass(), id);
+		return mapCounter.put(clazz, id);
 
 	}
 
 	public static <T> Integer getClosingId(Class<T> clazz) {
 
-		return mapCounter.get(clazz.getClass());
+		return mapCounter.get(clazz);
 	}
 
 	public boolean equals(Object other) {

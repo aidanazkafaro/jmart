@@ -19,28 +19,17 @@ import com.google.gson.reflect.TypeToken;
  */
 public class Jmart {
 
-	
-	public static List<Product> filterByAccountId (List<Product> list, int accountId, int page, int pageSize){
-		Predicate<Product> pred = temp -> (temp.accountId == accountId);
-        return paginate(list, page, pageSize, pred);
+	public static List<Product> filterByAccountId(List<Product> list, int accountId, int page, int pageSize) {
+
+		return paginate(list, page, pageSize, product -> product.accountId == accountId);
 	}
-	
-	public static List<Product> filterByName (List<Product> list, String search, int page, int pageSize){
-		
-		 List<Product> filteredList = new ArrayList<>();
-		 
-	        // iterate through the list
-	        for (Product entry: list)
-	        {
-	            // filter values
-	            if (entry.name.toLowerCase().contains(search.toLowerCase())) {
-	                filteredList.add(entry);
-	            }
-	        }
-		return paginate(filteredList, page, pageSize, (e) -> e.name == search);
-		
+
+	public static List<Product> filterByName(List<Product> list, String search, int page, int pageSize) {
+
+		return paginate(list, page, pageSize, product -> product.name.toLowerCase().contains(search.toLowerCase()));
+
 	}
-	
+
 	// method read terhadap resources
 	public static List<Product> read(String filepath) throws FileNotFoundException {
 		Gson gson = new Gson();
@@ -79,29 +68,34 @@ public class Jmart {
 		}
 		return returnList;
 
+		// return Algorithm.<Product>collect(list, prod -> prod.category == category);
+
 	}
-	
-	private static List<Product> paginate (List<Product> list, int page, int pageSize, Predicate<Product> pred){
-		
-		List<Product> resultList = new ArrayList<>();
-		
-		//loop through list
-		for(Product product : list) {
-			//filtering the element in list if pred == true
-			if (pred.predicate(product) == true) {
-				//add the element to resultList
-				resultList.add(product);
+
+	private static List<Product> paginate(List<Product> list, int page, int pageSize, Predicate<Product> pred) {
+
+		List<Product> resultList = new ArrayList<>(pageSize);
+		int startingIndex = (page) * pageSize;
+		int iteration = 0;
+		int occurences = 0;
+
+		for (; iteration < list.size() && occurences < startingIndex; ++iteration) {
+			if (pred.predicate(list.get(iteration))) {
+				++occurences;
 			}
 		}
-		
-		int index = (page-1) * pageSize;
-		
-		int floorPage = Math.min(index + pageSize, resultList.size());
-		return resultList.subList(index,  floorPage);
+
+		for (int i = iteration; i < list.size() && resultList.size() < pageSize; ++i) {
+			if (pred.predicate(list.get(i))) {
+				resultList.add(list.get(i));
+			}
+		}
+
+		return resultList;
 
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException {
 
 		System.out.println("account id: " + new Account(null, null, null, -1).id);
 		System.out.println("account id: " + new Account(null, null, null, -1).id);
@@ -110,17 +104,18 @@ public class Jmart {
 		System.out.println("payment id: " + new Payment(-1, -1, -1, null).id);
 		System.out.println("payment id: " + new Payment(-1, -1, -1, null).id);
 		System.out.println("payment id: " + new Payment(-1, -1, -1, null).id);
-		
-		try
-		{
-			List<Product> list = read("C:\\Users\\aidan\\Programming\\OOP Tekkom\\Praktikum OOP\\jmart\\randomProductList.json");
+
+		try {
+			List<Product> list = read(
+					"C:\\Users\\aidan\\Programming\\OOP Tekkom\\Praktikum OOP\\jmart\\randomProductList.json");
 			List<Product> filtered = filterByPrice(list, 98000.0, 0.0);
 			filtered.forEach(product -> System.out.println(product.price));
-		}
-		catch (Throwable t)
-		{
+		} catch (Throwable t) {
 			t.printStackTrace();
 		}
+		List<Product> list = read(
+				"C:\\Users\\aidan\\Programming\\OOP Tekkom\\Praktikum OOP\\jmart\\randomProductList.json");
+		System.out.println(filterByAccountId(list, 1, 0, 5));
 	}
 
 }
