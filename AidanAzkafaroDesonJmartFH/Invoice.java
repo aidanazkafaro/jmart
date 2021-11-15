@@ -1,6 +1,7 @@
 package AidanAzkafaroDesonJmartFH;
 
 import java.util.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
@@ -15,31 +16,31 @@ public abstract class Invoice extends Serializable
     public final Date date;
     public int buyerId;
     public int productId;
-    public int complaintId;
-    public Rating rating;
+    public int complaintId = -1;
+    public Rating rating = Rating.NONE;
     public Status status;
     public ArrayList<Record> history;
-    
+    public static final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     public static enum Rating
     {
-        NONE, BAD, NEUTRAL, GOOD;
+        BAD, GOOD, NEUTRAL, NONE;
     }
     
     public static enum Status 
     {
-        WAITING_CONFIRMATION, CANCELLED, ON_PROGRESS, ON_DELIVERY, COMPLAINT, FINISHED, FAILED;
+    	CANCELLED, COMPLAINT, DELIVERED, FAILED, FINISHED, ON_DELIVERY, ON_PROGRESS, WAITING_CONFIRMATION;
     }
     
     protected Invoice(int buyerId, int productId){
   
-        this.buyerId = buyerId;
-        this.productId = productId;
         this.date = new Date();
+		this.buyerId = buyerId;
+        this.productId = productId;
         this.rating = Rating.NONE;
         this.status = Status.WAITING_CONFIRMATION;
     }
     
-    public abstract double getTotalPay();
+    public abstract double getTotalPay(Product product);
     
     public class Record{
         public Status status;
