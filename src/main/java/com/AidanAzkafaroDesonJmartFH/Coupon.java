@@ -60,6 +60,11 @@ public class Coupon extends Serializable
     public enum Type
     {
         DISCOUNT, REBATE
-    }   
+    }
+
+	public boolean canApply(int id, double price, double discount) {
+		// TODO Auto-generated method stub
+		return false;
+	}   
     
 }

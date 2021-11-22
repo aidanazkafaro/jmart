@@ -9,7 +9,7 @@ import com.AidanAzkafaroDesonJmartFH.ObjectPoolThread;
 import com.AidanAzkafaroDesonJmartFH.Payment;
 import com.AidanAzkafaroDesonJmartFH.dbjson.JsonAutowired;
 
-public class PaymentController {
+public class PaymentController implements BasicGetController<Payment>{
 
 	public static final long DELIVERED_LIMIT_MS = 0;
 	public static final long ON_DELIVERED_LIMIT_MS = 0;
