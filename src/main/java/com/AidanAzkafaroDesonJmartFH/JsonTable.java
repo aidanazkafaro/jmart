@@ -5,7 +5,7 @@ import java.lang.reflect.Array;
 import java.util.Collections;
 import java.util.Vector;
 
-import com.google.gson.Gson;
+import com.google.gson.*;
 import com.google.gson.stream.JsonReader;
 
 /**
