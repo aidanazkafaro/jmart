@@ -9,36 +9,32 @@ import java.util.Date;
  * @author (Aidan Azkafaro Deson)
  * @version (a version number or a date)
  */
-public class Payment extends Invoice 
+public class Payment extends Invoice
 {
-    // instance variables - replace the example below with your own
-    public Shipment shipment;
+    public ArrayList<Record> history = new ArrayList<Record>();
     public int productCount;
-    public ArrayList<Record> history = new ArrayList<>();
-    
+    public Shipment shipment;
+
     public Payment(int buyerId, int productId, int productCount, Shipment shipment){
         super(buyerId, productId);
         this.productCount = productCount;
+        this.productId = productId;
         this.shipment = shipment;
     }
-    
-    @Override
-	public double getTotalPay(Product product) {
-		// TODO Auto-generated method stub
-		return product.price + product.shipmentPlans;
-	}
-    
-    public static class Record {
-    	public final Date date = new Date();
-    	public String message;
-    	public Status status;
-    	
-    	public Record (Status status, String message) {
-    		this.status = status;
-    		this.message = message;
-    	}
-    	
+
+    public double getTotalPay(Product product){
+        return product.price * product.discount;
     }
 
-	
+    public static class Record{
+        public Status status;
+        public Date date;
+        public String message;
+
+        public Record(Status status, String message){
+            this.status = status;
+            this.message = message;
+            this.date = java.util.Calendar.getInstance().getTime();
+        }
+    }
 }
