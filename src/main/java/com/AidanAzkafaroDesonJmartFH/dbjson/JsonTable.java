@@ -1,4 +1,4 @@
-package com.AidanAzkafaroDesonJmartFH;
+package com.AidanAzkafaroDesonJmartFH.dbjson;
 
 import java.io.*;
 import java.lang.reflect.Array;

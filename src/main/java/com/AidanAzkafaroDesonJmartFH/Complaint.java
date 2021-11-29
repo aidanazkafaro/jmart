@@ -3,6 +3,8 @@ package com.AidanAzkafaroDesonJmartFH;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import com.AidanAzkafaroDesonJmartFH.dbjson.Serializable;
+
 /**
  * Write a description of class Complaint here.
  *

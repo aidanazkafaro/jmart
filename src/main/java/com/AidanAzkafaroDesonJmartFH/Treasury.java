@@ -9,43 +9,31 @@ package com.AidanAzkafaroDesonJmartFH;
  */
 public class Treasury
 {
-    // instance variables - replace the example below with your own
     public static final double COMMISSION_MULTIPLIER = 0.05;
     public static final double BOTTOM_PRICE = 20000.0;
     public static final double BOTTOM_FEE = 1000.0;
-    public double discount;
-    public double price;
 
+    public double price, discount;
 
-    public double getAdjustedPrice()
-    {
-        return getDiscountedPrice() + getAdminFee();
+    public static double getAdjustedPrice(double price, double discount){
+        return getDiscountedPrice(price, discount) + getAdminFee(price, discount);
     }
 
-    public double getAdminFee()
-    {
-        if(getDiscountedPrice() < BOTTOM_PRICE)
-        {
+    public static double getAdminFee(double price, double discount){
+        if (getDiscountedPrice(price, discount) < BOTTOM_PRICE){
             return BOTTOM_FEE;
         }
-        
-        return (getDiscountedPrice()*COMMISSION_MULTIPLIER);
-        
-        
-    }   
-    
-    private double getDiscountedPrice()
-    {
-        if(discount > 100.0)
-        {
-            discount = 100.0;
-        }else if(discount == 100.0)
-        {
+        else{
+            return getDiscountedPrice(price, discount) - (price * COMMISSION_MULTIPLIER);
+        }
+    }
+
+    private static double getDiscountedPrice(double price, double discount){
+        if (discount >= 100){
             return 0.0;
         }
-        
-        return price - (price*discount);
-        
-        
+        else{
+            return ((100.0 - discount) * price) / 100;
+        }
     }
 }

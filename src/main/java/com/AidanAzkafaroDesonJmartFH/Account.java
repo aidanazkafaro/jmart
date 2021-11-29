@@ -2,41 +2,38 @@ package com.AidanAzkafaroDesonJmartFH;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.AidanAzkafaroDesonJmartFH.dbjson.Serializable;
+
 public class Account extends Serializable
 {
-    
-    // instance variables - replace the example below with your own
-    public String name;
-    public String email;
-    public String password;
+    public static final String REGEX_EMAIL = "^\\w+([.&`~-]?\\w+)*@\\w+([.-]?\\w+)+$";
+    public static final String REGEX_PASSWORD = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d][^-\\s]{7,}$";
     public double balance;
+    public String email, name, password;
     public Store store;
-    public static final String REGEX_EMAIL = "^\\\\w+([.&`~-]?\\\\w+)*@\\\\w+([.-]?\\\\w+)+$";
-    public static final String REGEX_PASSWORD = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\\\d)[a-zA-Z\\\\d][^-\\\\s]{8,}$";
-  
-    public Account (String name, String email, String password, double balance){
-        
+
+    public Account(String name, String email, String password, double balance){
         this.name = name;
         this.email = email;
         this.password = password;
         this.balance = balance;
     }
-  
+
     public boolean validate(){
         Pattern patternEmail = Pattern.compile(REGEX_EMAIL);
         Matcher matcherEmail = patternEmail.matcher(email);
-        boolean matchFoundEmail = matcherEmail.find();
-        boolean emailResult = matchFoundEmail ? true : false;
-        
+        boolean matchEmail = matcherEmail.find();
+        boolean hasilEmail = matchEmail ? true : false;
+
         Pattern patternPassword = Pattern.compile(REGEX_PASSWORD);
         Matcher matcherPassword = patternPassword.matcher(password);
-        boolean matchFoundPassword = matcherPassword.find();
-        boolean passwordResult = matchFoundPassword ? true : false;
-        
-        if(emailResult && passwordResult){
+        boolean matchPassword = matcherPassword.find();
+        boolean hasilPassword = matchPassword ? true : false;
+
+        if (hasilEmail == true && hasilPassword == true){
             return true;
         }
-        return false;
-        
+        else
+            return false;
     }
 }

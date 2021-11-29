@@ -1,5 +1,6 @@
 package com.AidanAzkafaroDesonJmartFH;
 
+import com.AidanAzkafaroDesonJmartFH.dbjson.Serializable;
 
 /**
  * Write a description of class Coupon here.
@@ -7,22 +8,14 @@ package com.AidanAzkafaroDesonJmartFH;
  * @author (Aidan Azkafaro Deson)
  * @version (a version number or a date)
  */
-public class Coupon extends Serializable
-{
-    // instance variables - replace the example below with your own
-    public final String name;
+public class Coupon extends Serializable {
     public final int code;
-    public final double cut;
+    public final double cut, minimum;
+    public final String name;
     public final Type type;
-    public final double minimum;
     private boolean used;
-    /**
-     * Constructor for objects of class Coupon
-     */
-    public Coupon(int id, String name, int code, Type type, double cut, double minimum)
-    {
-        // initialise instance variables
-    
+
+    public Coupon(String name, int code, Type type, double cut, double minimum){
         this.name = name;
         this.code = code;
         this.type = type;
@@ -31,40 +24,29 @@ public class Coupon extends Serializable
         used = false;
     }
 
-    public boolean isUsed()
-    {
-        return used;
-    }
-    
-    public boolean canApply(Treasury treasury)
-    {
-        if((treasury.getAdjustedPrice() > minimum) && !used)
-        {
-            return true;
+    public double apply(double price, double discount){
+        this.used = true;
+        if (type == Type.DISCOUNT) {
+            return (Treasury.getAdjustedPrice(price, discount) * ((100 - cut) / 100));
         }
-        
-        return false;
-        
-    }
-    
-    public double apply(Treasury treasury)
-    {
-        used=true;
-        if(type == Type.DISCOUNT) {
-            return (treasury.getAdjustedPrice() - ((100-cut)/100));
-        }
-        
-        return (treasury.getAdjustedPrice()-cut);
-    }
-    
-    public enum Type
-    {
-        DISCOUNT, REBATE
+        return (Treasury.getAdjustedPrice(price, discount) - cut);
     }
 
-	public boolean canApply(int id, double price, double discount) {
-		// TODO Auto-generated method stub
-		return false;
-	}   
-    
+    public boolean canApply(double price, double discount){
+        if (Treasury.getAdjustedPrice(price, discount) >= minimum && !used){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public boolean isUsed(){
+        return this.used;
+    }
+
+    public static enum Type{
+        DISCOUNT,
+        REBATE
+    }
 }

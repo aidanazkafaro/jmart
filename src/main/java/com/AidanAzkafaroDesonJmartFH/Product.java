@@ -1,5 +1,6 @@
 package com.AidanAzkafaroDesonJmartFH;
 
+import com.AidanAzkafaroDesonJmartFH.dbjson.Serializable;
 
 /**
  * Write a description of class Product here.

@@ -2,6 +2,8 @@ package com.AidanAzkafaroDesonJmartFH;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.AidanAzkafaroDesonJmartFH.dbjson.Serializable;
+
 /**
  * Write a description of class Store here.
  *

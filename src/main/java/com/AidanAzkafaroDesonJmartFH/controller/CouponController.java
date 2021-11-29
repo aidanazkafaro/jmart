@@ -5,55 +5,76 @@ import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.AidanAzkafaroDesonJmartFH.Algorithm;
 import com.AidanAzkafaroDesonJmartFH.Coupon;
-import com.AidanAzkafaroDesonJmartFH.JsonTable;
 import com.AidanAzkafaroDesonJmartFH.Product;
 import com.AidanAzkafaroDesonJmartFH.dbjson.JsonAutowired;
+import com.AidanAzkafaroDesonJmartFH.dbjson.JsonTable;
 
+@RestController
 @RequestMapping("/coupon")
 public class CouponController implements BasicGetController<Coupon> {
+    @JsonAutowired(value = Coupon.class, filepath = "coupon.json")
+    public static JsonTable<Coupon> couponTable;
 
-	@JsonAutowired(filepath ="C:\\Users\\aidan\\Programming\\OOP Tekkom\\Praktikum OOP\\jmart\\jsonFiles\\randomProductList.json", value = Coupon.class)
-	public static JsonTable<Coupon> couponTable;
+    @Override
+    public JsonTable<Coupon> getJsonTable() {
+        return couponTable;
+    }
 
-	
-	@GetMapping("/{id}/canApply")
-	public boolean canApply (
-			@RequestParam int id,
-			@RequestParam double price, 
-			@RequestParam double discount
-			)
-	{
-        for(Coupon coupon: getJsonTable()){
-            if(coupon.id == id){
-                return coupon.canApply(coupon.id, price, discount);
+    @GetMapping("/{id}/isUsed")
+    @ResponseBody
+    boolean isUsed
+            (
+                    @RequestParam int id
+            )
+    {
+        for (Coupon data : couponTable) {
+            if (data.id == id) {
+                return data.isUsed();
             }
         }
         return false;
     }
-	
-	@GetMapping("/getAvailable")
-	public List<Coupon> getAvailable (
-			@RequestParam int page, 
-			@RequestParam int pageSize)
-	{
-		return Algorithm.paginate(couponTable, page, pageSize,pred->pred.isUsed() == false);
 
-	}
-	
-	public JsonTable<Coupon> getJsonTable(){
-		return couponTable;
-	}
-	
-    @GetMapping("/{id}/isUsed")
-    public boolean isUsed(int id){
-        for(Coupon cou: getJsonTable()){
-            if(cou.id == id){
-                return cou.isUsed();
+    @GetMapping("/{id}/canApply")
+    @ResponseBody
+    boolean canApply
+            (
+                    @RequestParam int id,
+                    @RequestParam double price,
+                    @RequestParam double discount
+            )
+    {
+        for (Coupon data : couponTable) {
+            if (data.id == id) {
+                return data.canApply(price, discount);
             }
         }
         return false;
+    }
+
+    @GetMapping("/getAvailable")
+    @ResponseBody
+    List<Coupon> getAvailable
+            (
+                    @RequestParam int page,
+                    @RequestParam int pageSize
+            )
+    {
+        return Algorithm.paginate(couponTable, page, pageSize, pred-> !pred.isUsed());
+    }
+
+    @Override
+    public Coupon getById(int id) {
+        return BasicGetController.super.getById(id);
+    }
+
+    @Override
+    public List getPage(int page, int pageSize) {
+        return BasicGetController.super.getPage(page, pageSize);
     }
 }
