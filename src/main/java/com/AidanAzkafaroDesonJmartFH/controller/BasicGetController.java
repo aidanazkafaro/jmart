@@ -14,6 +14,11 @@ import com.AidanAzkafaroDesonJmartFH.Algorithm;
 import com.AidanAzkafaroDesonJmartFH.dbjson.JsonTable;
 import com.AidanAzkafaroDesonJmartFH.dbjson.Serializable;
 
+/**
+ * @author Aidan Azkafaro Deson
+ * @version 1.0
+ * @since 18 Desember 2021
+ */
 @RestController
 public interface BasicGetController<T extends Serializable> {
 	@GetMapping("/{id}")

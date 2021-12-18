@@ -17,6 +17,11 @@ import com.AidanAzkafaroDesonJmartFH.ProductCategory;
 import com.AidanAzkafaroDesonJmartFH.dbjson.JsonAutowired;
 import com.AidanAzkafaroDesonJmartFH.dbjson.JsonTable;
 
+/**
+ * @author Aidan Azkafaro Deson
+ * @version 1.0
+ * @since 18 Desember 2021
+ */
 @RestController
 @RequestMapping("/product")
 public class ProductController implements BasicGetController<Product> {
@@ -29,12 +34,31 @@ public class ProductController implements BasicGetController<Product> {
 		return productTable;
 	}
 
+	/**
+	 * 
+	 * @param id
+	 * @param page
+	 * @param pageSize
+	 * @return
+	 */
 	@GetMapping("/{id}/store")
 	@ResponseBody
 	List<Product> getProductByStore(@RequestParam int id, @RequestParam int page, @RequestParam int pageSize) {
 		return Algorithm.paginate(productTable, page, pageSize, pred -> pred.accountId == id);
 	}
 
+	/**
+	 * 
+	 * @param accountId
+	 * @param name
+	 * @param weight
+	 * @param conditionUsed
+	 * @param price
+	 * @param discount
+	 * @param category
+	 * @param shipmentPlans
+	 * @return
+	 */
 	@PostMapping("/create")
 	@ResponseBody
 	Product create(@RequestParam int accountId, @RequestParam String name, @RequestParam int weight,
@@ -51,6 +75,17 @@ public class ProductController implements BasicGetController<Product> {
 		return null;
 	}
 
+	/**
+	 * 
+	 * @param page
+	 * @param pageSize
+	 * @param search
+	 * @param minPrice
+	 * @param maxPrice
+	 * @param category
+	 * @param conditionUsed
+	 * @return
+	 */
     @GetMapping("/getFiltered")     
     @ResponseBody
     List<Product> getProductByFilter
@@ -58,8 +93,8 @@ public class ProductController implements BasicGetController<Product> {
                     @RequestParam int page,
                     @RequestParam int pageSize,
                     @RequestParam String search,
-                    @RequestParam double minPrice,
-                    @RequestParam double maxPrice,
+                    @RequestParam int minPrice,
+                    @RequestParam int maxPrice,
                     @RequestParam ProductCategory category,
                     @RequestParam boolean conditionUsed
             )

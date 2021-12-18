@@ -14,6 +14,12 @@ import com.AidanAzkafaroDesonJmartFH.Product;
 import com.AidanAzkafaroDesonJmartFH.dbjson.JsonAutowired;
 import com.AidanAzkafaroDesonJmartFH.dbjson.JsonTable;
 
+
+/**
+ * @author Aidan Azkafaro Deson
+ * @version 1.0
+ * @since 18 Desember 2021
+ */
 @RestController
 @RequestMapping("/coupon")
 public class CouponController implements BasicGetController<Coupon> {
@@ -25,6 +31,11 @@ public class CouponController implements BasicGetController<Coupon> {
         return couponTable;
     }
 
+    /**
+     * mengecek apakah coupon sudah terpakai
+     * @param id
+     * @return
+     */
     @GetMapping("/{id}/isUsed")
     @ResponseBody
     boolean isUsed
@@ -40,6 +51,13 @@ public class CouponController implements BasicGetController<Coupon> {
         return false;
     }
 
+    /**
+     * 
+     * @param id
+     * @param price
+     * @param discount
+     * @return
+     */
     @GetMapping("/{id}/canApply")
     @ResponseBody
     boolean canApply
@@ -57,6 +75,12 @@ public class CouponController implements BasicGetController<Coupon> {
         return false;
     }
 
+    /**
+     * 
+     * @param page
+     * @param pageSize
+     * @return
+     */
     @GetMapping("/getAvailable")
     @ResponseBody
     List<Coupon> getAvailable

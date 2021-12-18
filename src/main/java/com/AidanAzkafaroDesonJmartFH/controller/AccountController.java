@@ -13,9 +13,17 @@ import java.util.regex.Pattern;
 
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * @author Aidan Azkafaro Deson
+ * @version 1.0
+ * @since 18 Desember 2021
+ */
+
 @RestController
 @RequestMapping("/account")
 public class AccountController implements BasicGetController<Account> {
+	
+	//instance variable regex
 	public static final String REGEX_EMAIL = "^\\w+([\\.&`~-]?\\w+)*@\\w+([\\.-]?\\w+)+$";
 	public static final String REGEX_PASSWORD = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d][^-\\s]{7,}$";
 	public static final Pattern REGEX_PATTERN_EMAIL = Pattern.compile(REGEX_EMAIL);
@@ -23,6 +31,12 @@ public class AccountController implements BasicGetController<Account> {
 	@JsonAutowired(value = Account.class, filepath = "Akun.json")
 	public static JsonTable<Account> accountTable;
 
+	/**
+	 * mengecek data email dan password ke accountTable untuk LOGIN
+	 * @param email 
+	 * @param password
+	 * @return
+	 */
 	@PostMapping("/login")
 	Account login(@RequestParam String email, @RequestParam String password) {
 		try {
@@ -46,6 +60,13 @@ public class AccountController implements BasicGetController<Account> {
 		return null;
 	}
 
+	/**
+	 * memasukkan data name, email, password ke accountTable untuk REGISTER
+	 * @param name
+	 * @param email
+	 * @param password
+	 * @return
+	 */
 	@PostMapping("/register")
 	Account register(@RequestParam String name, @RequestParam String email, @RequestParam String password) {
 
@@ -72,6 +93,14 @@ public class AccountController implements BasicGetController<Account> {
 		return null;
 	}
 
+	/**
+	 * Menambahkan store
+	 * @param id
+	 * @param name
+	 * @param address
+	 * @param phoneNumber
+	 * @return
+	 */
 	@PostMapping("/{id}/registerStore")
 	Store register(@RequestParam int id, @RequestParam String name, @RequestParam String address,
 			@RequestParam String phoneNumber) {
@@ -84,6 +113,12 @@ public class AccountController implements BasicGetController<Account> {
 		return null;
 	}
 
+	/**
+	 * melakukan top up
+	 * @param id
+	 * @param balance
+	 * @return
+	 */
 	@PostMapping("/{id}/topUp")
 	Boolean topUp(@RequestParam int id, @RequestParam double balance) {
 		for (Account data : accountTable) {
@@ -95,6 +130,7 @@ public class AccountController implements BasicGetController<Account> {
 		return false;
 	}
 
+	
 	@Override
 	@GetMapping("/{id}")
 	public Account getById(@PathVariable int id) {
