@@ -2,10 +2,10 @@ package com.AidanAzkafaroDesonJmartFH;
 
 
 /**
- * Enumeration class ProductCategory - write a description of the enum class here
- *
- * @author (Aidan Azkafaro Deson)
- * @version (version number or date here)
+ * Class ProductCategory yang merupakan enum berisikan berbagai kategori produk
+ * @author Aidan Azkafaro Deson
+ * @version 1.0
+ * @since 18 Desember 2021
  */
 public enum ProductCategory
 {

@@ -51,20 +51,28 @@ public class ProductController implements BasicGetController<Product> {
 		return null;
 	}
 
-	@GetMapping("/getFiltered")
-	@ResponseBody
-	List<Product> getProductByFilter(@RequestParam int page, @RequestParam int pageSize, @RequestParam int accountId,
-			@RequestParam String search, @RequestParam int minPrice, @RequestParam int maxPrice,
-			@RequestParam ProductCategory category) {
-		List<Product> tempProduct = null;
-		for (Product each : productTable) {
-			if (each.accountId == accountId)
-				if (each.name.contains(search))
-					if (minPrice <= each.price)
-						if (maxPrice >= each.price)
-							if (each.category == category)
-								tempProduct.add(each);
-		}
-		return tempProduct;
-	}
+    @GetMapping("/getFiltered")     
+    @ResponseBody
+    List<Product> getProductByFilter
+            (
+                    @RequestParam int page,
+                    @RequestParam int pageSize,
+                    @RequestParam String search,
+                    @RequestParam double minPrice,
+                    @RequestParam double maxPrice,
+                    @RequestParam ProductCategory category,
+                    @RequestParam boolean conditionUsed
+            )
+    {
+        List<Product> tempProduct = new ArrayList<Product>();
+        for (Product each : productTable) {
+            if (each.name.contains(search))
+                if (minPrice <= each.price)
+                    if (maxPrice >= each.price)
+                        if (each.category == category)
+                            if(each.conditionUsed == conditionUsed)
+                                tempProduct.add(each);
+        }
+        return Algorithm.paginate(tempProduct, page, pageSize,pred->pred.weight != 0);
+    }
 }

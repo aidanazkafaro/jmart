@@ -6,9 +6,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.AidanAzkafaroDesonJmartFH.dbjson.JsonDBEngine;
 
 /**
- *
- * @author (Aidan Azkafaro Deson)
+ * Driver class dari project JMART
  * 
+ * @author Aidan Azkafaro Deson
+ * @version 1.0
+ * @since 18 Desember 2021
  */
 
 @SpringBootApplication

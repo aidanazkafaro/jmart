@@ -2,10 +2,10 @@ package com.AidanAzkafaroDesonJmartFH;
 
 
 /**
- * Write a description of class PriceTag here.
- *
- * @author (Aidan Azkafaro Deson)
- * @version (18/9/21)
+ * kelas untuk handle keuangan
+ * @author Aidan Azkafaro Deson
+ * @version 1.0
+ * @since 18 Desember 2021
  */
 public class Treasury
 {
@@ -15,10 +15,22 @@ public class Treasury
 
     public double price, discount;
 
+    /**
+     * method untuk mengembalikan harga setelah discount dan dikurangi admin fee
+     * @param price
+     * @param discount
+     * @return
+     */
     public static double getAdjustedPrice(double price, double discount){
         return getDiscountedPrice(price, discount) + getAdminFee(price, discount);
     }
 
+    /**
+     * method untuk mengembalikan admin fee berdasarkan harga dan discount
+     * @param price
+     * @param discount
+     * @return
+     */
     public static double getAdminFee(double price, double discount){
         if (getDiscountedPrice(price, discount) < BOTTOM_PRICE){
             return BOTTOM_FEE;
@@ -28,6 +40,12 @@ public class Treasury
         }
     }
 
+    /**
+     * method untuk mengembalikan harga setelah discount
+     * @param price
+     * @param discount
+     * @return
+     */
     private static double getDiscountedPrice(double price, double discount){
         if (discount >= 100){
             return 0.0;

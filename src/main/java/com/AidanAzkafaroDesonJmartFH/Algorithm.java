@@ -1,8 +1,15 @@
 package com.AidanAzkafaroDesonJmartFH;
 
+
 import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * Class Algorithm yang dipakai untuk menerapkan fungsi yang diterapkan ke collection
+ * @author Aidan Azkafaro Deson
+ * @version 1.0
+ * @since 18 Desember 2021
+ */
 public class Algorithm {
     private Algorithm() {
 

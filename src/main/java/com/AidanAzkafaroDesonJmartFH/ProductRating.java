@@ -2,10 +2,10 @@ package com.AidanAzkafaroDesonJmartFH;
 
 
 /**
- * Write a description of class ProductRating here.
- *
- * @author (Aidan Azkafaro Deson)
- * @version (a version number or a date)
+ * kelas untuk rating produk
+ * @author Aidan Azkafaro Deson
+ * @version 1.0
+ * @since 18 Desember 2021
  */
 public class ProductRating
 {
@@ -14,7 +14,7 @@ public class ProductRating
     private long count;
 
     /**
-     * Constructor for objects of class ProductRating
+     * Constructor untuk object dari kelas ProductRating
      */
     public ProductRating()
     {
@@ -23,6 +23,10 @@ public class ProductRating
         this.count = 0;
     }
 
+    /**
+     * memasukkan nilai rating ke produk
+     * @param rating
+     */
     public void insert(int rating)
     {
         // put your code here
@@ -30,6 +34,10 @@ public class ProductRating
         this.count = count + 1;
     }
     
+    /**
+     * mengembalikan rata-rata rating (total rating dibagi jumlah produk)
+     * @return
+     */
     public double getAverage()
     {
         if(count == 0)

@@ -3,17 +3,33 @@ package com.AidanAzkafaroDesonJmartFH;
 import java.util.Vector;
 import java.util.function.Function;
 
+/**
+ * Class untuk penerapan multi-threading
+ * 
+ * @author Aidan Azkafaro Deson
+ * @version 1.0
+ * @since 18 Desember 2021
+ */
 public class ObjectPoolThread<T> extends Thread{
 
 	private Function <T, Boolean> routine;
 	private boolean exitSignal;
 	private Vector<T> objectPool = new Vector<T>();
 	
+	/**
+	 * 
+	 * @param name
+	 * @param routine
+	 */
 	public ObjectPoolThread(String name, Function <T, Boolean> routine) {
 		super(name);
 		this.routine = routine;
 	}
 	
+	/**
+	 * 
+	 * @param routine
+	 */
 	public ObjectPoolThread(Function <T, Boolean> routine) {
 		this.routine = routine;
 	}
@@ -22,6 +38,10 @@ public class ObjectPoolThread<T> extends Thread{
 //		// TODO Auto-generated constructor stub
 //	}
 
+	/**
+	 * 
+	 * @param object
+	 */
 	public synchronized void add (T object) {
 		objectPool.add(object);
 	}
@@ -31,6 +51,9 @@ public class ObjectPoolThread<T> extends Thread{
         interrupt();
     }
     
+	/**
+	 * method run untuk menjalanakan thread
+	 */
     public void run() {
         while (!Thread.interrupted() && !exitSignal) {
             if (objectPool.isEmpty()) {
